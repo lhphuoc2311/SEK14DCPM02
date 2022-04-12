@@ -1,5 +1,6 @@
 package com.cgm;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -17,4 +18,24 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    @Test
+    public void testFoo() {
+
+        Foo foo = new Foo();
+        String fooBar = foo.getFooBar();
+        assertEquals("fooBar", fooBar);
+
+
+        
+    }
+
+    @Test
+    public void testName() {
+        
+    }
+
+    
+
+    
 }
