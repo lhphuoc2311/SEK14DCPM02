@@ -1,0 +1,17 @@
+[
+    {
+        "lnum": "100",
+        "year": 2022,
+        "model": "XXX"
+    },
+    {
+        "lnum": "101",
+        "year": 2017,
+        "model": "yyy"
+    },
+    {
+        "lnum": "102",
+        "year": 2018,
+        "model": "zzzz"
+    }
+]
