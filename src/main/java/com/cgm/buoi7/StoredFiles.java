@@ -5,8 +5,11 @@
 package com.cgm.buoi7;
 
 import java.io.FileReader;
+import java.io.FileWriter;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -30,7 +33,7 @@ public class StoredFiles {
      * @param value
      * @return: index of elements *** -1: not found
      */
-                      //un         //mrteo
+    // un //mrteo
     public int search(String key, String value) {
         // duyet
         int index = -1;
@@ -39,7 +42,7 @@ public class StoredFiles {
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
             username = jsonObject.get(key).getAsString();
-            if(value.equals(username)){
+            if (value.equals(username)) {
                 index = i;//
                 break;
             }
@@ -56,6 +59,27 @@ public class StoredFiles {
         }
 
         return jsonArray;
+    }
+
+    // add to memory
+    public void update(String username, Integer password, String email) {
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("un", username);
+        jsonObject.addProperty("ps", password);
+        jsonObject.addProperty("email", email);
+
+        memory.add(jsonObject);
+        // memory.ad
+    }
+
+    public void write() {
+        Gson gson = new Gson();
+        try (FileWriter writer = new FileWriter(storedFile)) {
+            gson.toJson(memory, writer);
+        } catch (Exception e) {
+            e.printStackTrace();
+
+        }
     }
 
 }

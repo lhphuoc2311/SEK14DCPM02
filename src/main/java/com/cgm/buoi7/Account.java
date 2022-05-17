@@ -4,6 +4,9 @@
 */
 package com.cgm.buoi7;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.gson.JsonArray;
 
 public class Account {
@@ -14,9 +17,6 @@ public class Account {
     private Integer password;
     private String email;
     private boolean loggedIn;
-
-
-    
 
     /**
      * 
@@ -29,9 +29,6 @@ public class Account {
 
     }
 
-
-
-
     /**
      * @param username
      * @param password
@@ -39,23 +36,23 @@ public class Account {
      * @param loggedIn
      */
 
-    public Account(String username, Integer password, String email, boolean loggedIn) {
+    public Account(String username, Integer password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.loggedIn = loggedIn;
+        //this.loggedIn = loggedIn;
     }
 
-    //check login
-    public boolean checkLoggedIn(){
+    // check login
+    public boolean checkLoggedIn() {
         return loggedIn;
     }
 
-    public void login(String username, Integer password){
-        //to do
+    public void login(String username, Integer password) {
+        // to do
     }
 
-    public void logout(){
+    public void logout() {
         this.loggedIn = false;
         this.username = null;
         this.password = null;
@@ -64,43 +61,80 @@ public class Account {
 
     }
 
+    // hanh vi cuar object
+    public static void createAccount(String username, Integer password, String email) {
+        // so do tuan tu - sequence
+        // check valid username, email =>??? class method : accountValid
+        List<Object> listCheck;
+        listCheck = accountValid(username, email);
 
-    //hanh vi cuar object
-    public static void createAccount(String username, Integer password, String email){
-        //so do tuan tu - sequence
-        //check valid username, email =>??? class method : accountValid
-        boolean valid;
-        valid = accountValid(username, email);
-
-        if(!valid){
-            ///
+        if(!(boolean)listCheck.get(0)){
+            System.out.println(listCheck.get(1));
         }else{
-            //tao tai khoan => CSDL
+            //them account moi vao CSDL
+            accounts.update(username, password, email);//memory
+            accounts.write();
+            System.out.println(listCheck.get(1));
         }
+
+
+        // if(!valid){
+        // /
+        // }else{
+        // tao tai khoan => CSDL
+        // }
 
     }
 
-    public static boolean accountValid(String username, String email){
+    public static List<Object> accountValid(String username, String email) {
+        List<Object> list = new ArrayList<>();
         int index = 0;
-        boolean valid = true;
-        //check username = mr teo
+        // Boolean valid = true;
+        // check username = mr teo
         index = accounts.search("un", username);
 
-        if(index != -1){
-            valid = false;
+        if (index != -1) {
+            // valid = false;
+            list.add(false);// 0
+            list.add("[USERNAME EXISTS] An user with that username already exists.");// 1
+            return list;
         }
 
         index = accounts.search("email", email);
-        if(index != - 1){
-            valid = false;
+        if (index != -1) {
+            // valid = false;
+            list.add(false);
+            list.add("[EMAIL EXISTS] A mail with that email already exists.");
+            return list;
         }
-        return valid;
+
+        if (index == -1) {
+            // valid
+            list.add(true);
+            list.add("[ACCOUNT_CREATED] An account has been created.");
+        }
+        return list;
     }
 
-    
+    /**
+     * @return the username
+     */
+    public String getUsername() {
+        return username;
+    }
 
-    
+    /**
+     * @return the password
+     */
+    public Integer getPassword() {
+        return password;
+    }
 
+    /**
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
 
-    
 }

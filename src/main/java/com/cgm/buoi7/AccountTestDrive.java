@@ -4,17 +4,27 @@
 */
 package com.cgm.buoi7;
 
+import java.util.List;
+
 public class AccountTestDrive {
     public static void main(String[] args) {
         //Account account = new Account();
-        boolean test = Account.accountValid("mrteo", "mrteo@gmail.com");
+        List<Object> list = Account.accountValid("mr ku", "mrku@gmail.com");
 
-        if(!test){
-            System.out.println("[USERNAME EXISTS or EMAIL] A User with that username or email already exists." );
+        Boolean b; //=> Object
 
-        }else{
-            System.out.println("[ACCOUNT_CREATED] An account has been createa.");
-        }
+       System.out.println(list.get(0) + " === " + list.get(1));
+
+       //un: thanhtam
+       //ps:123
+       //eamai:tamkute@gmail.com
+
+       Account.createAccount("thanhtam", 123, "tamkute@gmail.com");
+       
+
+       
+       
+       
 
     }
     
