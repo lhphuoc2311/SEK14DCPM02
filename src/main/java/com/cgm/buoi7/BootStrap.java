@@ -6,6 +6,9 @@ package com.cgm.buoi7;
 
 import java.util.Scanner;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+
 public class BootStrap {
     public static void main(String[] args) throws InterruptedException {
         Scanner inpuScanner  = new Scanner(System.in);
@@ -22,7 +25,7 @@ public class BootStrap {
             //command
             String rep = inpuScanner.nextLine();
 
-
+            //LI
            String cmd =  uiTerminal.handleCommands(rep);
 
             if(cmd != null && !cmd.equals("Unkown command.")){
@@ -30,6 +33,10 @@ public class BootStrap {
                 uiTerminal.handleInputs();
             }
             //inpuScanner.nextLine();
+
+           
+           
+           
             
 
         }

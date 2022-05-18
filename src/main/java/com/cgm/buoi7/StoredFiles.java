@@ -37,10 +37,13 @@ public class StoredFiles {
     public int search(String key, String value) {
         // duyet
         int index = -1;
+
+        
         // ...
         String username = null;
         for (int i = 0; i < memory.size(); i++) {
             JsonObject jsonObject = memory.get(i).getAsJsonObject();
+            
             username = jsonObject.get(key).getAsString();
             if (value.equals(username)) {
                 index = i;//
@@ -52,6 +55,8 @@ public class StoredFiles {
 
     public JsonArray read() {
         JsonArray jsonArray = null;
+        
+        
         try (FileReader reader = new FileReader(storedFile)) {
             jsonArray = (JsonArray) JsonParser.parseReader(reader);
         } catch (Exception e) {
@@ -81,5 +86,11 @@ public class StoredFiles {
 
         }
     }
+
+    public JsonArray getAll(){
+        return this.memory;
+    }
+
+
 
 }
