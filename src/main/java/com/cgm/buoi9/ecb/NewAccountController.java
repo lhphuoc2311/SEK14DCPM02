@@ -43,7 +43,7 @@ public class NewAccountController {
         // tao tai khoan => CSDL
         // }
     }
-    public static List<Object> accountValid(String username, String email) {
+    public  List<Object> accountValid(String username, String email) {
         List<Object> list = new ArrayList<>();
         int index = 0;
         // Boolean valid = true;

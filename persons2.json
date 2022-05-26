@@ -1,0 +1,15 @@
+{
+    "name": "Teo",
+    "lCars": [
+        {
+            "lnum": "100",
+            "year": 2000,
+            "model": "model1"
+        },
+        {
+            "lnum": "102",
+            "year": 2001,
+            "model": "model2"
+        }
+    ]
+}

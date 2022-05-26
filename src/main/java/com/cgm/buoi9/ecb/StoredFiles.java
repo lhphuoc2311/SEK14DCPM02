@@ -69,6 +69,11 @@ public class StoredFiles {
     // add to memory
     public void update(String username, Integer password, String email) {
         JsonObject jsonObject = new JsonObject();
+
+
+        //JsonArray jsonArray = new JsonArray();
+        //jsonArray.ad
+
         jsonObject.addProperty("un", username);
         jsonObject.addProperty("ps", password);
         jsonObject.addProperty("email", email);
